@@ -1,0 +1,33 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col col-6">
+      <div class="card">
+        <form th:action="@{/saveMsg}" th:object="${message}" method="post"  >
+          <div class="card-body">
+            <input name="header" type="text" th:field="*{header}" placeholder="Title" class="form-control my-3" />
+            <span th:if="${#fields.hasErrors('header')}" th:errors="*{header}" class="text-danger "></span>
+
+            <textarea  class="form-control" th:field="*{body}" placeholder="Your Message"  cols="30" rows="5"></textarea>
+            <span th:if="${#fields.hasErrors('body')}" th:errors="*{body}" class="text-danger "></span>
+
+
+          </div>
+          <div class="card-footer d-flex gap-3 justify-content-end">
+            <button type="reset" class="btn btn-outline-secondary">
+              Reset
+            </button>
+            <button type="submit" class="btn btn-outline-info">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</html>
