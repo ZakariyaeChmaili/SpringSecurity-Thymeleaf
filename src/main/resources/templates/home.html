@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-between m-2">
     <a class="navbar-brand" href="#">Navbar</a>
-    <a th:href="@{/logout}" class="btn btn-outline-danger"> Logout</a>
+    <a th:href="@{/auth/logout}" class="btn btn-outline-danger"> Logout</a>
 </nav>
 
 <div class="container mt-5">
@@ -10,21 +10,58 @@
         <div class="row justify-content-center">
             <div class="col col-10">
                 <div class="row mb-3 justify-content-end">
-                    <a th:href="@{'/formMsg'}" class="btn btn-outline-primary w-auto">Add Message</a>
+                    <a th:href="@{'/formAdd'}" class="btn btn-outline-primary w-auto">Add Message</a>
                 </div>
                 <div class="card p-3 shadow">
                     <div class="card-body">
-                        <div class="row justify-content-center my-2 " th:each="msg:${messages}">
-                            <div class="col col-2 border p-2  rounded" th:text="${msg.header}"></div>
-                            <div class="col col-4 border p-2  rounded" th:text="${msg.body}"></div>
-                            <div class="col col-2 border p-2  rounded" th:text="${msg.date}"></div>
-                            <div class="col col-2 border p-2  rounded d-flex gap-2">
-                                <a th:href="@{'/deleteMsg/'+${msg.id}}"
-                                   class="btn btn-outline-danger align-self-center">delete</a>
-                                <a th:href="@{'/editMsg/'+${msg.id}}"
-                                   class="btn btn-outline-secondary align-self-center">edit</a>
-                            </div>
-                        </div>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">isbn</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Auteur</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Domaine</th>
+                                <th scope="col">NbrExemplaire</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="livre:${livres}">
+                                <th scope="row"  th:text="${livre.ISBN}"></th>
+                                <th scope="row"  th:text="${livre.titre}"></th>
+                                <td th:text="${livre.auteur}"></td>
+                                <td th:text="${livre.date}"></td>
+                                <td th:text="${livre.domaine}"></td>
+                                <td th:text="${livre.nbrExemplaire}"></td>
+                                <td>
+                                  <div class="d-flex">
+                                      <a th:href="@{'/deleteLivre/'+${livre.ISBN}}" class="btn btn-outline-danger">delete</a>
+                                      <a th:href="@{'/formUpdate/'+${livre.ISBN}}" class="btn btn-outline-secondary">edit</a>
+                                  </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+<!--                        <div class="row justify-content-center my-2 " th:each="msg:${messages}">-->
+<!--                            <div class="col col-2 border p-2  rounded" th:text="${msg.header}"></div>-->
+<!--                            <div class="col col-4 border p-2  rounded" th:text="${msg.body}"></div>-->
+<!--                            <div class="col col-2 border p-2  rounded" th:text="${msg.date}"></div>-->
+<!--                            <div class="col col-2 border p-2  rounded d-flex gap-2">-->
+<!--                                <a th:href="@{'/deleteMsg/'+${msg.id}}"-->
+<!--                                   class="btn btn-outline-danger align-self-center">delete</a>-->
+<!--                                <a th:href="@{'/editMsg/'+${msg.id}}"-->
+<!--                                   class="btn btn-outline-secondary align-self-center">edit</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+
                     </div>
                 </div>
             </div>

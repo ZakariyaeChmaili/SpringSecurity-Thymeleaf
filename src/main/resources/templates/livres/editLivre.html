@@ -1,0 +1,42 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col col-6">
+      <div class="card">
+        <form th:action="@{/updateLivre}" th:object="${livre}" method="post">
+          <div class="card-body">
+            <input name="titre" type="text" th:field="*{titre}" placeholder="Titre"
+                   class="form-control my-3"/>
+            <!--            <span th:if="${#fields.hasErrors('header')}" th:errors="*{header}" class="text-danger "></span>-->
+
+            <input name="auteur" type="text" th:field="*{auteur}" placeholder="auteur"
+                   class="form-control my-3"/>
+            <input name="domaine" type="text" th:field="*{domaine}" placeholder="domaine"
+                   class="form-control my-3"/>
+
+            <input name="date" type="text" th:field="*{date}" placeholder="date" class="form-control my-3"/>
+
+            <input name="nbrExemplaire" type="text" th:field="*{nbrExemplaire}" placeholder="nbrExemplaire"
+                   class="form-control my-3"/>
+
+                <input type="text" name="ISBN" th:field="*{ISBN}" hidden>
+
+          </div>
+          <div class="card-footer d-flex gap-3 justify-content-end">
+            <button type="reset" class="btn btn-outline-secondary">
+              Reset
+            </button>
+            <button type="submit" class="btn btn-outline-info">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</html>

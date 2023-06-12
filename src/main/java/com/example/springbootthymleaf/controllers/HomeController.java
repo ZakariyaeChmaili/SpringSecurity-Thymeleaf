@@ -10,16 +10,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-//        model.addAttribute("view", "test");
         return "redirect:/home";
     }
 
-//    @GetMapping("home")
-//    public String test(Model model){
-//
-//        model.addAttribute("view","home");
-//        return "layout";
-//    }
+
 
 
 }
